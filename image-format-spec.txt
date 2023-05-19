@@ -1,0 +1,54 @@
+Image format spec (4 colors)
+============================
+
+By convention, the file extension is .4bm (four color bitmap).
+
+The file is layed out as below. Color depth is always 3, which signifies that
+the image contains 4 colors. Though, not currently implemented, this field
+could be used to support up to 256 colors.
+
+         0                   1                   2                   3
+         0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Magic bytes                    |Color depth    |Color 1 red ch.|
+Binary  |0 1 0 1 0 1 0 0 0 1 1 0 1 0 0 1|0 0 0 0 0 0 1 1|               |
+ASCII   |              T               i|               |               |
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Color 1 green c|Color 1 blue ch|Color 2 red ch.|Color 2 green c|
+Binary  |               |               |               |               |
+ASCII   |               |               |               |               |
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Color 2 blue ch|Color 3 red ch.|Color 3 green c|Color 3 blue ch|
+Binary  |               |               |               |               |
+ASCII   |               |               |               |               |
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Color 4 red ch.|Color 4 green c|Color 4 blue ch|Image width    |
+Binary  |               |               |               |               |
+ASCII   |               |               |               |               |
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Data (variable length)                                         |
+Binary  |                                                               |
+ASCII   |                                                               |
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Example
+=======
+
+         0                   1                   2                   3
+         0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Magic bytes                    |Color depth    |Color 1 red ch.|
+Binary  |0 1 0 1 0 1 0 0 0 1 1 0 1 0 0 1|0 0 0 0 0 0 1 1|1 1 1 1 1 1 1 1|
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Color 1 green c|Color 1 blue ch|Color 2 red ch.|Color 2 green c|
+Binary  |1 1 1 1 1 1 1 1|1 1 1 1 1 1 1 1|0 0 0 0 0 0 0 0|0 0 0 0 0 0 0 0|
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Color 2 blue ch|Color 3 red ch.|Color 3 green c|Color 3 blue ch|
+Binary  |0 0 0 0 0 0 0 0|1 0 0 0 0 1 1 1|1 1 1 1 0 1 1 1|0 1 0 1 0 1 1 1|
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Color 4 red ch.|Color 4 green c|Color 4 blue ch|Image width    |
+Binary  |0 0 0 0 0 1 1 1|1 0 1 0 1 1 1 1|0 0 1 0 1 1 1 1|0 0 1 0 1 0 0 0|
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+Descr.  |Data (variable length)                                         |
+Binary  |                                                               |
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
